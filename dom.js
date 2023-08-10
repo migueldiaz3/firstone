@@ -6,9 +6,22 @@ var header=document.getElementById('main-header');
 header.style.borderBottom='solid 3px #000';
 
 
-var item=document.getElementsByClassName('list-group-item');
-console.log(item);
-item[2].style.backgroundColor='green';
-for(var i=0;i<item.length;i++){
-    item[i].style.fontWeight='bold';
+var li=document.getElementsByTagName('li');
+console.log(li);
+li[2].style.backgroundColor='red';
+for(var i=0;i<li.length;i++){
+    li[i].style.fontWeight='bold';
+}
+
+var li=document.getElementsByTagName('li');
+console.log(li);
+li[1].style.backgroundColor='red';
+for(var i=0;i<li.length;i++){
+    li[i].style.fontWeight='bold';
+}
+
+var odd = document.querySelectorAll('li:nth-child(odd)');
+for (var i=0;i<odd.length;i++){
+    odd[i].style.backgroundColor='green';
+
 }

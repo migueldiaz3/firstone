@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Form with Submit, Edit, and Delete Buttons</title>
+</head>
+<body>
+
+<h1>User Management Form</h1>
+
+<form id="userForm">
+    <label for="username">Username:</label>
+    <input type="text" id="username" name="username" required>
+    <button type="submit">Submit</button>
+</form>
+
+<h2>Users:</h2>
+<ul id="userList">
+    <!-- User entries will be added here -->
+</ul>
+
+<script>
+    const userForm = document.getElementById('userForm');
+    const userList = document.getElementById('userList');
+
+    userForm.addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        const usernameInput = userForm.elements.username;
+        const username = usernameInput.value;
+
+        if (username.trim() === '') {
+            alert('Please enter a valid username.');
+            return;
+        }
+
+        const listItem = document.createElement('li');
+        listItem.textContent = username;
+
+        const editButton = document.createElement('button');
+        editButton.textContent = 'Edit';
+        editButton.addEventListener('click', function() {
+            const updatedUsername = prompt('Edit username:', username);
+            if (updatedUsername !== null) {
+                listItem.textContent = updatedUsername;
+            }
+        });
+
+        const deleteButton = document.createElement('button');
+        deleteButton.textContent = 'Delete';
+        deleteButton.addEventListener('click', function() {
+            userList.removeChild(listItem);
+        });
+
+        listItem.appendChild(editButton);
+        listItem.appendChild(deleteButton);
+        userList.appendChild(listItem);
+
+        usernameInput.value = '';
+    });
+</script>
+
+</body>
+</html>

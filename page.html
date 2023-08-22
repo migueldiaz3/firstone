@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Expense Tracker</title>
+    <style>
+        /* Add your CSS styles here */
+    </style>
+</head>
+<body>
+    <h1>Expense Tracker</h1>
+    <form id="expenseForm">
+        <label for="expenseAmount">Expense Amount (in Rupees):</label>
+        <input type="number" id="expenseAmount" name="expenseAmount" required>
+        
+        <label for="expenseDescription">Description:</label>
+        <input type="text" id="expenseDescription" name="expenseDescription" required>
+        
+        <label for="expenseCategory">Category:</label>
+        <select id="expenseCategory" name="expenseCategory">
+            <option value="fuel">Fuel</option>
+            <option value="grocery">Grocery</option>
+            <option value="medical">Medical</option>
+            <!-- Add more categories as needed -->
+        </select>
+        
+        <button type="button" id="addExpenseButton">Add Expense</button>
+    </form>
+    
+    <h2>Expense List</h2>
+    <ul id="expenseList">
+        <!-- Added expenses will be listed here -->
+    </ul>
+    
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const expenseForm = document.getElementById("expenseForm");
+            const expenseList = document.getElementById("expenseList");
+            
+            expenseForm.addEventListener("submit", function(event) {
+                event.preventDefault();
+            });
+            
+            const addExpenseButton = document.getElementById("addExpenseButton");
+            addExpenseButton.addEventListener("click", function() {
+                const amount = document.getElementById("expenseAmount").value;
+                const description = document.getElementById("expenseDescription").value;
+                const category = document.getElementById("expenseCategory").value;
+                
+                const expenseItem = document.createElement("li");
+                expenseItem.innerHTML = `
+                    <span><strong>Amount:</strong> ${amount} INR</span>
+                    <span><strong>Description:</strong> ${description}</span>
+                    <span><strong>Category:</strong> ${category}</span>
+                    <button class="editButton">Edit</button>
+                    <button class="deleteButton">Delete</button>
+                `;
+                
+                const deleteButton = expenseItem.querySelector(".deleteButton");
+                deleteButton.addEventListener("click", function() {
+                    expenseList.removeChild(expenseItem);
+                });
+                
+                const editButton = expenseItem.querySelector(".editButton");
+                editButton.addEventListener("click", function() {
+                    // Implement edit functionality here
+                });
+                
+                expenseList.appendChild(expenseItem);
+                
+                // Clear input fields after adding an expense
+                document.getElementById("expenseAmount").value = "";
+                document.getElementById("expenseDescription").value = "";
+            });
+        });
+    </script>
+</body>
+</html>

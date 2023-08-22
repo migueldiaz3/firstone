@@ -3,7 +3,7 @@
 <head>
     <title>Expense Tracker</title>
     <style>
-        /* Add your CSS styles here */
+        
     </style>
 </head>
 <body>
@@ -20,7 +20,7 @@
             <option value="fuel">Fuel</option>
             <option value="grocery">Grocery</option>
             <option value="medical">Medical</option>
-            <!-- Add more categories as needed -->
+           
         </select>
         
         <button type="button" id="addExpenseButton">Add Expense</button>
@@ -28,7 +28,7 @@
     
     <h2>Expense List</h2>
     <ul id="expenseList">
-        <!-- Added expenses will be listed here -->
+       
     </ul>
     
     <script>
@@ -62,12 +62,12 @@
                 
                 const editButton = expenseItem.querySelector(".editButton");
                 editButton.addEventListener("click", function() {
-                    // Implement edit functionality here
+                    
                 });
                 
                 expenseList.appendChild(expenseItem);
                 
-                // Clear input fields after adding an expense
+               
                 document.getElementById("expenseAmount").value = "";
                 document.getElementById("expenseDescription").value = "";
             });
